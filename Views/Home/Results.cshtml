@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Results";
+}
+
+@using Central_Dispatch_Prototype.Models
+@model Preferences
+<div style="padding-top: 150px"></div>
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: white; border-color: white;">
+    <div class="container">
+        <div class="navbar-header">
+            <img src="~/Content/Mobile_Header_Browse.png" style="max-width: 100%; padding: 4px;" />
+            <input type="button" onclick="location.href='@Url.Action("Index")'" class="top-right" />
+        </div>
+    </div>
+</div>
+<p>
+    @Html.Raw(Model.returnResults(Model))
+</p>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!--<div class="modal-body">-->
+            <img src="~/Content/Request_Dialog.png" />
+            <div class="bottom-right"><button id="closeDialog" data-dismiss="modal">CANCEL</button></div>
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+

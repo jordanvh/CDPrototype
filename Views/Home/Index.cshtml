@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <div>
+        <br />
+        <p>
+            This prototype is a work in progress. Not all features and functions are available at this time.
+            <br />
+            <br />
+            Thank you for helping us test new ideas.
+        </p>
+        <br />
+        <input type="button" class="btn btn-success btn-outline" value="Begin Searching" onclick="location.href='@Url.Action("Options")'"/>
+    </div>

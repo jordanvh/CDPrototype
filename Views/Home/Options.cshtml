@@ -1,0 +1,86 @@
+﻿@using Central_Dispatch_Prototype.Models
+@model Preferences
+        <h2>Preferences</h2>
+        <br />
+
+        <!-- Find a way to prevent people from chosing same start & end location-->
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4 class="text-left" id="option">Starting Location</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DropDownListFor(m => m.Starting, new SelectList(Enum.GetValues(typeof(Location))), htmlAttributes: new { @id = "start", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 id="option" class="text-left">Destination</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DropDownListFor(m => m.Endpoint, new SelectList(Enum.GetValues(typeof(Location))), htmlAttributes: new { @id = "end", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 id="option" class="text-left"> Minimum Payment ($)</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.EnumDropDownListFor(m => m.Payout, htmlAttributes: new { @style = @"width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4 id="option" class="text-left">Average Rating</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.EnumDropDownListFor(m => m.Rating, htmlAttributes: new { @style = @"width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br />
+            <br />
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#start").change(function () {
+                        var selectedStart = $("#start option:selected").val();
+                        var selectedEnd = $("#end option:selected").val();
+
+                        if (selectedStart != selectedEnd) {
+                            $("#toNext").css("background-color", "#f06424");
+                        } else {
+                            $("#toNext").css("background-color", "#dddddd");
+                        }
+                    });
+
+                    $("#end").change(function () {
+                        var selectedStart = $("#start option:selected").val();
+                        var selectedEnd = $("#end option:selected").val();
+
+                        if (selectedStart != selectedEnd) {
+                            $("#toNext").css("background-color", "#f06424");
+                        } else {
+                            $("#toNext").css("background-color", "#dddddd");
+                        }
+                    });
+                });
+            </script>
+
+            <button class="btn" id="toNext" input type="submit">
+                Next
+            </button>
+        }

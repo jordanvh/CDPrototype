@@ -1,0 +1,128 @@
+﻿@using Central_Dispatch_Prototype.Models
+@model Preferences
+
+<h2>Rankings</h2>
+
+<p>Rank the attributes from most to least important to you. Please chose each option only once.</p>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <h4 class="text-left">Most Important</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownListFor(m => m.top, new SelectList(Enum.GetValues(typeof(Part))), htmlAttributes: new { @id = "first", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="text-left">Second</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownListFor(m => m.second, new SelectList(Enum.GetValues(typeof(Part))), htmlAttributes: new { @id = "second", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="text-left">Third</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownListFor(m => m.third, new SelectList(Enum.GetValues(typeof(Part))), htmlAttributes: new { @id = "third", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4 class="text-left">Least Important</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DropDownListFor(m => m.last, new SelectList(Enum.GetValues(typeof(Part))), htmlAttributes: new { @id = "fourth", @style = @"  width: 192px; height: 32px; border-radius: 2px; border: solid 1px #babcbe; background-color: #ffffff;" })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+    <br />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ranked").prop("disabled", true);
+
+            $("#first").change(function () {
+                var selectedFirst = $("#first option:selected").val();
+                var selectedTwo = $("#second option:selected").val();
+                var selectedThree = $("#third option:selected").val();
+                var selectedFour = $("#fourth option:selected").val();
+
+                if (((selectedFirst != selectedTwo) && (selectedFirst != selectedThree) && (selectedFirst != selectedFour)) && ((selectedTwo != selectedThree) && (selectedTwo != selectedFour)) && (selectedFour != selectedThree)) {
+                    $("#ranked").css("background-color", "#f06424");
+                    $("#ranked").prop("disabled", false);
+                } else {
+                    $("#ranked").css("background-color", "#dddddd");
+                    $("#ranked").prop("disabled", true);
+                }
+            });
+
+            $("#second").change(function () {
+                var selectedFirst = $("#first option:selected").val();
+                var selectedTwo = $("#second option:selected").val();
+                var selectedThree = $("#third option:selected").val();
+                var selectedFour = $("#fourth option:selected").val();
+
+                if (((selectedFirst != selectedTwo) && (selectedFirst != selectedThree) && (selectedFirst != selectedFour)) && ((selectedTwo != selectedThree) && (selectedTwo != selectedFour)) && (selectedFour != selectedThree)) {
+                    $("#ranked").css("background-color", "#f06424");
+                    $("#ranked").prop("disabled", false);
+                } else {
+                    $("#ranked").css("background-color", "#dddddd");
+                    $("#ranked").prop("disabled", true);
+                }
+            });
+
+            $("#third").change(function () {
+                var selectedFirst = $("#first option:selected").val();
+                var selectedTwo = $("#second option:selected").val();
+                var selectedThree = $("#third option:selected").val();
+                var selectedFour = $("#fourth option:selected").val();
+
+                if (((selectedFirst != selectedTwo) && (selectedFirst != selectedThree) && (selectedFirst != selectedFour)) && ((selectedTwo != selectedThree) && (selectedTwo != selectedFour)) && (selectedFour != selectedThree)) {
+                    $("#ranked").css("background-color", "#f06424");
+                    $("#ranked").prop("disabled", false);
+                } else {
+                    $("#ranked").css("background-color", "#dddddd");
+                    $("#ranked").prop("disabled", true);
+                }
+            });
+
+            $("#fourth").change(function () {
+                var selectedFirst = $("#first option:selected").val();
+                var selectedTwo = $("#second option:selected").val();
+                var selectedThree = $("#third option:selected").val();
+                var selectedFour = $("#fourth option:selected").val();
+
+                if (((selectedFirst != selectedTwo) && (selectedFirst != selectedThree) && (selectedFirst != selectedFour)) && ((selectedTwo != selectedThree) && (selectedTwo != selectedFour)) && (selectedFour != selectedThree)) {
+                    $("#ranked").css("background-color", "#f06424");
+                    $("#ranked").prop("disabled", false);
+                } else {
+                    $("#ranked").css("background-color", "#dddddd");
+                    $("#ranked").prop("disabled", true);
+                }
+            });
+        });
+    </script>
+
+    <button class="btn" id="ranked" input type="submit">
+        Submit
+    </button>
+}
+
